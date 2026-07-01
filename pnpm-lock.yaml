@@ -21,6 +21,9 @@ importers:
       '@sap/cds-dk':
         specifier: ^9.9.3
         version: 9.9.3(@eslint/js@10.0.1)
+      cap-js-mockdata:
+        specifier: ^0.0.3
+        version: 0.0.3(@sap/cds@9.9.2(@eslint/js@10.0.1))
 
 packages:
 
@@ -56,6 +59,10 @@ packages:
     peerDependenciesMeta:
       eslint:
         optional: true
+
+  '@faker-js/faker@8.4.1':
+    resolution: {integrity: sha512-XQ3cU+Q8Uqmrbf2e0cIC/QN43sTBSC8KF12u29Mb47tWrt2hAgBXSgpZMj4Ao8Uk0iJcU99QsOCaIL8934obCg==}
+    engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0, npm: '>=6.14.13'}
 
   '@sap/cds-compiler@6.9.3':
     resolution: {integrity: sha512-8fEeM6D059ruqLWoJqzFSNLkGoUCMnycx7Zv4OP4nA9zZeHzFC3nAe6s3ak2kASSiub1xAMMPzDE/9EnSXQKLw==}
@@ -166,6 +173,11 @@ packages:
     resolution: {integrity: sha512-+ys997U96po4Kx/ABpBCqhA9EuxJaQWDQg7295H4hBphv3IZg0boBKuwYpt4YXp6MZ5AmZQnU/tyMTlRpaSejg==}
     engines: {node: '>= 0.4'}
 
+  cap-js-mockdata@0.0.3:
+    resolution: {integrity: sha512-karaxixa6KS8B5mCNQ3X1PukRQjm/ks9g+7VDp9BQzH78lxW1QzlMyXZ0BrJT1Iiynsh/Ua/x9QWRAIalS4HtA==}
+    peerDependencies:
+      '@sap/cds': '>=7'
+
   chownr@1.1.4:
     resolution: {integrity: sha512-jJ0bqzaylmJtVnNgzTeSOs8DPavpbYgEr/b0YL8/2GO3xJEhInFmhKMUnEJQjZumK7KXGFhUy89PrsJWlakBVg==}
 
@@ -212,6 +224,10 @@ packages:
     resolution: {integrity: sha512-aW35yZM6Bb/4oJlZncMH2LCoZtJXTRxES17vE3hoRiowU2kWHaJKFkSBDnDR+cm9J+9QhXmREyIfv0pji9ejCQ==}
     engines: {node: '>=10'}
 
+  deeks@3.2.1:
+    resolution: {integrity: sha512-D/o0k3pCG1aI1cxb/dDiWmtMc4Rh7ZQBybXpfMsw9Rbtqwg8kUA9SpYkWcw0pAUjZSnPm8MluctiS0o68r69jQ==}
+    engines: {node: '>= 16'}
+
   deep-extend@0.6.0:
     resolution: {integrity: sha512-LOHxIOaPYdHlJRtCQfDIVZtfw/ufM8+rVj649RIHzcm/vGwQRXFt6OPqIFWsm2XEMrNIEtWR64sY1LEKD2vAOA==}
     engines: {node: '>=4.0.0'}
@@ -227,6 +243,10 @@ packages:
   detect-libc@2.1.2:
     resolution: {integrity: sha512-Btj2BOOO83o3WyH59e8MgXsxEQVcarkUOpEYrubB0urwnN10yQ364rsiByU11nZlqWYZm05i/of7io4mzihBtQ==}
     engines: {node: '>=8'}
+
+  doc-path@4.1.4:
+    resolution: {integrity: sha512-yw5D++UCIB6a033PvQaUvSpW2QuKW0+DOId763n0Q4z3brxS7G8oQr8yBQ1nQFkognKrAVrV6I55TLeU9cfXTg==}
+    engines: {node: '>=16'}
 
   dotenv@16.6.1:
     resolution: {integrity: sha512-uBq4egWHTcTt33a72vpSG0z3HnPuIl6NqYcTrKEg2azoEyl2hpW0zqlxysq2pK9HlDIHyHyakeYaYnSAwd8bow==}
@@ -366,6 +386,10 @@ packages:
   is-number@7.0.0:
     resolution: {integrity: sha512-41Cifkg6e8TylSpdtTpeLVMqvSBEVzTttHvERD741+pnZ8ANv0004MRL43QKPDlK9cGvNp6NZWZUBlbGXYxxng==}
     engines: {node: '>=0.12.0'}
+
+  json-2-csv@5.5.11:
+    resolution: {integrity: sha512-kVuwgVL7rfad9ETf02ZZxJPuMR5ZSUn139+T34BfmVxYhb/IsAIm/LzEeQ8YLJmXfuQ5z7LUAFrgPZZM6VLJPw==}
+    engines: {node: '>= 16'}
 
   livereload-js@4.0.2:
     resolution: {integrity: sha512-Fy7VwgQNiOkynYyNBTo3v9hQUhcW5pFAheJN148+DTgpShjsy/22pLHKKwDK5v0kOsZsJBK+6q1PMgLvRmrwFQ==}
@@ -662,6 +686,8 @@ snapshots:
 
   '@eslint/js@10.0.1': {}
 
+  '@faker-js/faker@8.4.1': {}
+
   '@sap/cds-compiler@6.9.3': {}
 
   '@sap/cds-dk@9.9.3(@eslint/js@10.0.1)':
@@ -805,6 +831,12 @@ snapshots:
       call-bind-apply-helpers: 1.0.2
       get-intrinsic: 1.3.0
 
+  cap-js-mockdata@0.0.3(@sap/cds@9.9.2(@eslint/js@10.0.1)):
+    dependencies:
+      '@faker-js/faker': 8.4.1
+      '@sap/cds': 9.9.2(@eslint/js@10.0.1)
+      json-2-csv: 5.5.11
+
   chownr@1.1.4: {}
 
   clone@2.1.2: {}
@@ -833,6 +865,8 @@ snapshots:
     dependencies:
       mimic-response: 3.1.0
 
+  deeks@3.2.1: {}
+
   deep-extend@0.6.0: {}
 
   depd@2.0.0: {}
@@ -840,6 +874,8 @@ snapshots:
   destroy@1.2.0: {}
 
   detect-libc@2.1.2: {}
+
+  doc-path@4.1.4: {}
 
   dotenv@16.6.1: {}
 
@@ -1005,6 +1041,11 @@ snapshots:
   ipaddr.js@1.9.1: {}
 
   is-number@7.0.0: {}
+
+  json-2-csv@5.5.11:
+    dependencies:
+      deeks: 3.2.1
+      doc-path: 4.1.4
 
   livereload-js@4.0.2: {}
 
