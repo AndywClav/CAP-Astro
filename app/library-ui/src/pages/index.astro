@@ -1,0 +1,32 @@
+---
+// Welcome to Astro! Everything between these triple-dash code fences
+// is your "component frontmatter". It never runs in the browser.
+console.log("This runs in your terminal, not the browser!");
+let books: { title: string }[] = [];
+try {
+  const response = await fetch("http://localhost:4004/odata/v4/library/Books");
+  const data = await response.json();
+  console.log("Fetched data:", data);
+  books = data.value;
+} catch (error) {
+  console.error("Error fetching data:", error);
+  books = [{ title: "Error fetching books" }];
+}
+---
+
+<!-- Below is your "component template." It's just HTML, but with
+    some magic sprinkled in to help you build great templates. -->
+<html>
+  <body>
+    <h1>Hello, World!</h1>
+    <ul>
+      {books.map((book: { title: string }) => <li>{book.title}</li>)}
+    </ul>
+  </body>
+</html>
+
+<style>
+  h1 {
+    color: orange;
+  }
+</style>
