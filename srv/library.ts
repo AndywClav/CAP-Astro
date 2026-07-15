@@ -1,5 +1,5 @@
-import cds from "@sap/cds";
-import { Books, Chapters, Authors } from "#cds-models/LibraryService";
+import cds from '@sap/cds';
+import { Books, Chapters, Authors } from '#cds-models/LibraryService';
 
 export class LibraryService extends cds.ApplicationService {
   init() {
