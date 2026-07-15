@@ -11,14 +11,22 @@
     "@cap-js/cds-types": "^0.16.0",
     "@cap-js/sqlite": "^2",
     "@sap/cds-dk": "^9.9.3",
+    "@sap/eslint-plugin-cds": "^4",
     "@types/node": "^24.0.0",
     "cap-js-mockdata": "^0.0.3",
+    "eslint": "^10",
+    "eslint-config-prettier": "^10.1.8",
+    "prettier": "3.9.5",
     "tsx": "^4",
     "typescript": "^6.0.0"
   },
   "scripts": {
     "start": "cds-serve",
-    "dev": "cds watch"
+    "dev": "cds watch",
+    "lint": "eslint . && pnpm -r --filter ./app/** run lint",
+    "lint:fix": "eslint . --fix && pnpm -r --filter ./app/** run lint:fix",
+    "format": "prettier . --write && pnpm -r --filter ./app/** run format",
+    "format:check": "prettier . --check && pnpm -r --filter ./app/** run format:check"
   },
   "private": true,
   "imports": {
