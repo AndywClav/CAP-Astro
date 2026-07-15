@@ -2,7 +2,7 @@
 // Welcome to Astro! Everything between these triple-dash code fences
 // is your "component frontmatter". It never runs in the browser.
 console.log("This runs in your terminal, not the browser!");
-let books: { title: string }[] = [];
+let books: { title: string }[];
 try {
   const response = await fetch("http://localhost:4004/odata/v4/library/Books");
   const data = await response.json();

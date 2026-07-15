@@ -11,18 +11,9 @@
     "allowJs": true,
     "noEmit": true,
     "paths": {
-      "@sap/cds": [
-        "./node_modules/@cap-js/cds-types"
-      ],
-      "#cds-models/*": [
-        "./@cds-models/*"
-      ]
+      "@sap/cds": ["./node_modules/@cap-js/cds-types"],
+      "#cds-models/*": ["./@cds-models/*"]
     }
   },
-  "exclude": [
-    "@cds-models",
-    "node_modules",
-    "app",
-    "gen"
-  ]
+  "exclude": ["@cds-models", "node_modules", "app", "gen"]
 }
