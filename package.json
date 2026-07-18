@@ -17,6 +17,8 @@
     "cap-js-mockdata": "^0.0.3",
     "eslint": "^10",
     "eslint-config-prettier": "^10.1.8",
+    "husky": "^9.1.7",
+    "lint-staged": "^17.0.8",
     "prettier": "3.9.5",
     "tsx": "^4",
     "typescript": "^6.0.0"
@@ -27,8 +29,27 @@
     "lint": "eslint . && pnpm -r --filter ./app/** run lint",
     "lint:fix": "eslint . --fix && pnpm -r --filter ./app/** run lint:fix",
     "format": "prettier . --write && pnpm -r --filter ./app/** run format",
-    "format:check": "prettier . --check && pnpm -r --filter ./app/** run format:check"
+    "format:check": "prettier . --check && pnpm -r --filter ./app/** run format:check",
+    "check": "pnpm lint && pnpm format:check && pnpm -r --filter ./app/** run check",
+    "prepare": "husky"
   },
+  "lint-staged": {
+  "srv/**/*.{js,mjs,cjs,ts}": [
+    "eslint --fix"
+  ],
+
+  "db/**/*.cds": [
+    "prettier --write"
+  ],
+
+  "app/library-ui/**/*.{js,mjs,cjs,ts,astro}": [
+    "pnpm --dir app/library-ui lint:fix"
+  ],
+
+  "**/*.{json,yml,yaml,md}": [
+    "prettier --write"
+  ]
+},
   "private": true,
   "imports": {
     "#cds-models/*": "./@cds-models/*/index.js"
