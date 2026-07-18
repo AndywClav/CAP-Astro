@@ -34,22 +34,21 @@
     "prepare": "husky"
   },
   "lint-staged": {
-  "srv/**/*.{js,mjs,cjs,ts}": [
-    "eslint --fix"
-  ],
-
-  "db/**/*.cds": [
-    "prettier --write"
-  ],
-
-  "app/library-ui/**/*.{js,mjs,cjs,ts,astro}": [
-    "pnpm --dir app/library-ui lint:fix"
-  ],
-
-  "**/*.{json,yml,yaml,md}": [
-    "prettier --write"
-  ]
-},
+    "srv/**/*.{js,mjs,cjs,ts}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "**/*.cds": [
+      "eslint --fix"
+    ],
+    "app/library-ui/**/*.{js,mjs,cjs,ts,astro}": [
+      "pnpm --dir app/library-ui lint:fix",
+      "pnpm --dir app/library-ui format"
+    ],
+    "**/*.{json,yml,yaml,md}": [
+      "prettier --write"
+    ]
+  },
   "private": true,
   "imports": {
     "#cds-models/*": "./@cds-models/*/index.js"

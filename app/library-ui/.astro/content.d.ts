@@ -131,18 +131,8 @@ declare module 'astro:content' {
     infer TCollectionFilter,
     infer TError
   >
-    ? {
-        data: TData;
-        entryFilter: TEntryFilter;
-        collectionFilter: TCollectionFilter;
-        error: TError;
-      }
-    : {
-        data: never;
-        entryFilter: never;
-        collectionFilter: never;
-        error: never;
-      };
+    ? { data: TData; entryFilter: TEntryFilter; collectionFilter: TCollectionFilter; error: TError }
+    : { data: never; entryFilter: never; collectionFilter: never; error: never };
   type ExtractEntryFilterType<T> = ExtractLoaderTypes<T>['entryFilter'];
   type ExtractCollectionFilterType<T> = ExtractLoaderTypes<T>['collectionFilter'];
   type ExtractErrorType<T> = ExtractLoaderTypes<T>['error'];
