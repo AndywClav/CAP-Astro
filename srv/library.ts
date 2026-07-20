@@ -7,6 +7,11 @@ export class LibraryService extends cds.ApplicationService {
       console.log('Before CREATE/UPDATE Books', req.data);
     });
 
+    this.on('READ', Books, async (req, next) => {
+      console.log('On READ Books', req.data);
+      return next();
+    });
+
     return super.init();
   }
 }
