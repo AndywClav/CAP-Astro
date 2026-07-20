@@ -21,14 +21,17 @@ importers:
         specifier: ^0.16.0
         version: 0.16.0(@sap/cds-dk@9.9.3(@eslint/js@10.0.1(eslint@10.7.0)))(@sap/cds@9.9.2(@eslint/js@10.0.1(eslint@10.7.0)))(@types/express@5.0.6)
       '@cap-js/sqlite':
-        specifier: ^2
-        version: 2.4.0(@sap/cds@9.9.2(@eslint/js@10.0.1(eslint@10.7.0)))
+        specifier: ^3.0.2
+        version: 3.0.2(@sap/cds@9.9.2(@eslint/js@10.0.1(eslint@10.7.0)))(better-sqlite3@12.11.1)(generic-pool@3.9.0)
       '@sap/cds-dk':
         specifier: ^9.9.3
         version: 9.9.3(@eslint/js@10.0.1(eslint@10.7.0))
       '@sap/eslint-plugin-cds':
         specifier: ^4
         version: 4.2.4(@sap/cds@9.9.2(@eslint/js@10.0.1(eslint@10.7.0)))(eslint@10.7.0)
+      '@types/express':
+        specifier: ^5.0.6
+        version: 5.0.6
       '@types/node':
         specifier: ^24.0.0
         version: 24.13.2
@@ -394,6 +397,18 @@ packages:
     peerDependencies:
       '@sap/cds': '>=9.8'
 
+  '@cap-js/db-service@3.0.1':
+    resolution:
+      {
+        integrity: sha512-sWy+EYyfY7YzJspKcGqln4gWNVffcRwd/vm47T+tMa85+LWtOsmJgdfH8i1KVCR3o8zaywmPwSflnnSOKoZJkg==,
+      }
+    peerDependencies:
+      '@sap/cds': ^10
+      generic-pool: ^3.9.0
+    peerDependenciesMeta:
+      generic-pool:
+        optional: true
+
   '@cap-js/openapi@1.5.0':
     resolution:
       {
@@ -411,6 +426,21 @@ packages:
       '@sap/cds': '>=9.8'
       sql.js: ^1.13.0
     peerDependenciesMeta:
+      sql.js:
+        optional: true
+
+  '@cap-js/sqlite@3.0.2':
+    resolution:
+      {
+        integrity: sha512-C+wiMzRxgmNF919ZcIjXPlAGlgunXUzPAldp5WMZ4fmb+komfADMmdUzYqS1LklnBXBkdxrKlP30giNTutPwpg==,
+      }
+    peerDependencies:
+      '@sap/cds': ^10
+      better-sqlite3: ^12.0.0
+      sql.js: ^1.13.0
+    peerDependenciesMeta:
+      better-sqlite3:
+        optional: true
       sql.js:
         optional: true
 
@@ -5096,6 +5126,13 @@ snapshots:
     dependencies:
       '@sap/cds': 9.9.2(@eslint/js@10.0.1(eslint@10.7.0))
       generic-pool: 3.9.0
+    optional: true
+
+  '@cap-js/db-service@3.0.1(@sap/cds@9.9.2(@eslint/js@10.0.1(eslint@10.7.0)))(generic-pool@3.9.0)':
+    dependencies:
+      '@sap/cds': 9.9.2(@eslint/js@10.0.1(eslint@10.7.0))
+    optionalDependencies:
+      generic-pool: 3.9.0
 
   '@cap-js/openapi@1.5.0(@sap/cds@9.9.2(@eslint/js@10.0.1(eslint@10.7.0)))':
     dependencies:
@@ -5107,6 +5144,16 @@ snapshots:
       '@cap-js/db-service': 2.11.0(@sap/cds@9.9.2(@eslint/js@10.0.1(eslint@10.7.0)))
       '@sap/cds': 9.9.2(@eslint/js@10.0.1(eslint@10.7.0))
       better-sqlite3: 12.11.1
+    optional: true
+
+  '@cap-js/sqlite@3.0.2(@sap/cds@9.9.2(@eslint/js@10.0.1(eslint@10.7.0)))(better-sqlite3@12.11.1)(generic-pool@3.9.0)':
+    dependencies:
+      '@cap-js/db-service': 3.0.1(@sap/cds@9.9.2(@eslint/js@10.0.1(eslint@10.7.0)))(generic-pool@3.9.0)
+      '@sap/cds': 9.9.2(@eslint/js@10.0.1(eslint@10.7.0))
+    optionalDependencies:
+      better-sqlite3: 12.11.1
+    transitivePeerDependencies:
+      - generic-pool
 
   '@capsizecss/unpack@4.0.1':
     dependencies:
@@ -6002,22 +6049,26 @@ snapshots:
 
   balanced-match@4.0.4: {}
 
-  base64-js@1.5.1: {}
+  base64-js@1.5.1:
+    optional: true
 
   better-sqlite3@12.11.1:
     dependencies:
       bindings: 1.5.0
       prebuild-install: 7.1.3
+    optional: true
 
   bindings@1.5.0:
     dependencies:
       file-uri-to-path: 1.0.0
+    optional: true
 
   bl@4.1.0:
     dependencies:
       buffer: 5.7.1
       inherits: 2.0.4
       readable-stream: 3.6.2
+    optional: true
 
   body-parser@1.20.5:
     dependencies:
@@ -6050,6 +6101,7 @@ snapshots:
     dependencies:
       base64-js: 1.5.1
       ieee754: 1.2.1
+    optional: true
 
   bytes@3.1.2: {}
 
@@ -6083,7 +6135,8 @@ snapshots:
     dependencies:
       readdirp: 5.0.0
 
-  chownr@1.1.4: {}
+  chownr@1.1.4:
+    optional: true
 
   ci-info@4.4.0: {}
 
@@ -6181,10 +6234,12 @@ snapshots:
   decompress-response@6.0.0:
     dependencies:
       mimic-response: 3.1.0
+    optional: true
 
   deeks@3.2.1: {}
 
-  deep-extend@0.6.0: {}
+  deep-extend@0.6.0:
+    optional: true
 
   deep-is@0.1.4: {}
 
@@ -6254,6 +6309,7 @@ snapshots:
   end-of-stream@1.4.5:
     dependencies:
       once: 1.4.0
+    optional: true
 
   entities@4.5.0: {}
 
@@ -6398,7 +6454,8 @@ snapshots:
 
   eventemitter3@5.0.4: {}
 
-  expand-template@2.0.3: {}
+  expand-template@2.0.3:
+    optional: true
 
   express@4.22.2:
     dependencies:
@@ -6466,7 +6523,8 @@ snapshots:
     dependencies:
       flat-cache: 4.0.1
 
-  file-uri-to-path@1.0.0: {}
+  file-uri-to-path@1.0.0:
+    optional: true
 
   fill-range@7.1.1:
     dependencies:
@@ -6510,14 +6568,16 @@ snapshots:
 
   fresh@0.5.2: {}
 
-  fs-constants@1.0.0: {}
+  fs-constants@1.0.0:
+    optional: true
 
   fsevents@2.3.3:
     optional: true
 
   function-bind@1.1.2: {}
 
-  generic-pool@3.9.0: {}
+  generic-pool@3.9.0:
+    optional: true
 
   get-caller-file@2.0.5: {}
 
@@ -6545,7 +6605,8 @@ snapshots:
     dependencies:
       resolve-pkg-maps: 1.0.0
 
-  github-from-package@0.0.0: {}
+  github-from-package@0.0.0:
+    optional: true
 
   github-slugger@2.0.0: {}
 
@@ -6664,7 +6725,8 @@ snapshots:
     dependencies:
       safer-buffer: 2.1.2
 
-  ieee754@1.2.1: {}
+  ieee754@1.2.1:
+    optional: true
 
   ignore@5.3.2: {}
 
@@ -6674,7 +6736,8 @@ snapshots:
 
   inherits@2.0.4: {}
 
-  ini@1.3.8: {}
+  ini@1.3.8:
+    optional: true
 
   ipaddr.js@1.9.1: {}
 
@@ -6883,7 +6946,8 @@ snapshots:
 
   mimic-function@5.0.1: {}
 
-  mimic-response@3.1.0: {}
+  mimic-response@3.1.0:
+    optional: true
 
   minimatch@10.2.5:
     dependencies:
@@ -6891,7 +6955,8 @@ snapshots:
 
   minimist@1.2.8: {}
 
-  mkdirp-classic@0.5.3: {}
+  mkdirp-classic@0.5.3:
+    optional: true
 
   mrmime@2.0.1: {}
 
@@ -6905,7 +6970,8 @@ snapshots:
 
   nanoid@3.3.16: {}
 
-  napi-build-utils@2.0.0: {}
+  napi-build-utils@2.0.0:
+    optional: true
 
   natural-compare@1.4.0: {}
 
@@ -6922,6 +6988,7 @@ snapshots:
   node-abi@3.93.0:
     dependencies:
       semver: 7.8.5
+    optional: true
 
   node-addon-api@8.9.0:
     optional: true
@@ -6962,6 +7029,7 @@ snapshots:
   once@1.4.0:
     dependencies:
       wrappy: 1.0.2
+    optional: true
 
   onetime@7.0.0:
     dependencies:
@@ -7054,6 +7122,7 @@ snapshots:
       simple-get: 4.0.1
       tar-fs: 2.1.5
       tunnel-agent: 0.6.0
+    optional: true
 
   prelude-ls@1.2.1: {}
 
@@ -7074,6 +7143,7 @@ snapshots:
     dependencies:
       end-of-stream: 1.4.5
       once: 1.4.0
+    optional: true
 
   punycode@2.3.1: {}
 
@@ -7099,12 +7169,14 @@ snapshots:
       ini: 1.3.8
       minimist: 1.2.8
       strip-json-comments: 2.0.1
+    optional: true
 
   readable-stream@3.6.2:
     dependencies:
       inherits: 2.0.4
       string_decoder: 1.3.0
       util-deprecate: 1.0.2
+    optional: true
 
   readdirp@4.1.2: {}
 
@@ -7299,13 +7371,15 @@ snapshots:
 
   signal-exit@4.1.0: {}
 
-  simple-concat@1.0.1: {}
+  simple-concat@1.0.1:
+    optional: true
 
   simple-get@4.0.1:
     dependencies:
       decompress-response: 6.0.0
       once: 1.4.0
       simple-concat: 1.0.1
+    optional: true
 
   sisteransi@1.0.5: {}
 
@@ -7351,6 +7425,7 @@ snapshots:
   string_decoder@1.3.0:
     dependencies:
       safe-buffer: 5.2.1
+    optional: true
 
   stringify-entities@4.0.4:
     dependencies:
@@ -7365,7 +7440,8 @@ snapshots:
     dependencies:
       ansi-regex: 6.2.2
 
-  strip-json-comments@2.0.1: {}
+  strip-json-comments@2.0.1:
+    optional: true
 
   svgo@4.0.2:
     dependencies:
@@ -7383,6 +7459,7 @@ snapshots:
       mkdirp-classic: 0.5.3
       pump: 3.0.4
       tar-stream: 2.2.0
+    optional: true
 
   tar-stream@2.2.0:
     dependencies:
@@ -7391,6 +7468,7 @@ snapshots:
       fs-constants: 1.0.0
       inherits: 2.0.4
       readable-stream: 3.6.2
+    optional: true
 
   tiny-inflate@1.0.3: {}
 
@@ -7443,6 +7521,7 @@ snapshots:
   tunnel-agent@0.6.0:
     dependencies:
       safe-buffer: 5.2.1
+    optional: true
 
   type-check@0.4.0:
     dependencies:
@@ -7718,7 +7797,8 @@ snapshots:
       string-width: 7.2.0
       strip-ansi: 7.2.0
 
-  wrappy@1.0.2: {}
+  wrappy@1.0.2:
+    optional: true
 
   ws@8.21.0: {}
 
