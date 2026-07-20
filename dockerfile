@@ -31,7 +31,8 @@ RUN pnpm install --frozen-lockfile --ignore-scripts
 
 COPY srv ./srv
 COPY db ./db
-COPY db.sqlite ./
+
+RUN pnpm deploy
 
 COPY --from=builder /usr/src/app/app/library-ui/dist ./app/library-ui/dist
 

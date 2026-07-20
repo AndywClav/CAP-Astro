@@ -27,6 +27,7 @@
   "scripts": {
     "start": "cds-serve",
     "dev": "cds watch",
+    "deploy": "cds deploy --to sqlite",
     "lint": "eslint . && pnpm -r --filter ./app/** run lint",
     "lint:fix": "eslint . --fix && pnpm -r --filter ./app/** run lint:fix",
     "format": "prettier . --write && pnpm -r --filter ./app/** run format",
