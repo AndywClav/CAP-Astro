@@ -1,32 +1,65 @@
 ---
-// Welcome to Astro! Everything between these triple-dash code fences
-// is your "component frontmatter". It never runs in the browser.
-console.log("This runs in your terminal, not the browser!");
-let books: { title: string }[];
-try {
-  const response = await fetch("http://localhost:4004/odata/v4/library/Books");
-  const data = await response.json();
-  console.log("Fetched data:", data);
-  books = data.value;
-} catch (error) {
-  console.error("Error fetching data:", error);
-  books = [{ title: "Error fetching books" }];
-}
 ---
 
-<!-- Below is your "component template." It's just HTML, but with
-    some magic sprinkled in to help you build great templates. -->
-<html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Library</title>
+  </head>
+
   <body>
-    <h1>Hello, World!</h1>
-    <ul>
-      {books.map((book: { title: string }) => <li>{book.title}</li>)}
+    <h1>Library Books</h1>
+
+    <ul id="books">
+      <li>Loading books...</li>
     </ul>
+
+    <script>
+      async function loadBooks() {
+        const booksElement: HTMLElement | null = document.getElementById("books");
+
+        try {
+          const response = await fetch("/odata/v4/library/Books");
+
+          if (!response.ok) {
+            throw new Error(`HTTP error ${response.status}`);
+          }
+
+          const data = await response.json();
+
+          if (booksElement) {
+            booksElement.innerHTML = "";
+          }
+
+          data.value.forEach((book: { title: string }) => {
+            const li = document.createElement("li");
+            li.textContent = book.title;
+            if (booksElement) {
+              booksElement.appendChild(li);
+            }
+          });
+        } catch (error) {
+          console.error("Error fetching books:", error);
+
+          if (booksElement) {
+            booksElement.innerHTML =
+              "<li>Error loading books</li>";
+          }
+        }
+      }
+
+      loadBooks();
+    </script>
+
+    <style>
+      h1 {
+        color: orange;
+      }
+
+      li {
+        margin: 8px 0;
+      }
+    </style>
   </body>
 </html>
-
-<style>
-  h1 {
-    color: orange;
-  }
-</style>
